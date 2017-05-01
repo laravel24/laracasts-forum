@@ -8,20 +8,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
-    use Notifiable;
+  use Notifiable;
 
-    protected $fillable = [ 'name', 'email', 'password' ];
+  protected $fillable = [ 'name', 'email', 'password' ];
 
-    protected $hidden = [ 'password', 'remember_token' ];
+  protected $hidden = [ 'password', 'remember_token' ];
 
-    public function getRouteKeyName()
-    {
-      return 'name';
-    }
+  public function getRouteKeyName()
+  {
+    return 'name';
+  }
 
-    public function threads()
-    {
-      return $this->hasMany(Thread::class)->latest();
-    }
+  public function threads()
+  {
+    return $this->hasMany(Thread::class)->latest();
+  }
+
+  public function activity()
+  {
+    return $this->hasMany(Activity::class);
+  }
 
 }
