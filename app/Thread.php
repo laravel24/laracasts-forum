@@ -4,8 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\RecordsActivity;
+
 class Thread extends Model
 {
+
+  use RecordsActivity;
 
   protected $fillable = ['user_id', 'title', 'body', 'channel_id'];
 
